@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Crud Basic Kotlin</string>
+    <string name="lista_de_alunos">Lista de Alunos</string>
+    <string name="atualizar_aluno">Atualizar Aluno</string>
+    <string name="cadastar_novo">Cadastar Novo</string>
+    <string name="cadastrar_responsavel">Cadastrar Responsavel</string>
+    <string name="cadastrar_aluno">Cadastrar Aluno</string>
+    <string name="inserir_os_dados">Inserir os Dados</string>
+    <string name="salvar">Salvar</string>
+    <string name="nome">Nome</string>
+    <string name="atualizar_os_dados">Atualizar os Dados</string>
+    <string name="atualizar">Atualizar</string>
+    <string name="textview">TextView</string>
+</resources>
