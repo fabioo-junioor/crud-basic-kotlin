@@ -4,42 +4,76 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
+import android.util.Log
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_cad_aluno.*
+import com.example.crudbasickotlin.databinding.ActivityCadAlunoBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 import java.util.*
 import kotlin.concurrent.schedule
+
+private lateinit var binding: ActivityCadAlunoBinding
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(GsonConverterFactory.create())
+    .baseUrl("http://10.0.2.2/backendProjetoKotlin/")
+    .build()
+    .create(CadAluno.enviarForm::class.java)
 
 class CadAluno : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cad_aluno)
+        binding = ActivityCadAlunoBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val button_salvar_aluno: Button = findViewById(R.id.btn_salvar_cad_aluno)
-        button_salvar_aluno.setOnClickListener{
+        binding.btnSalvarCadAluno.setOnClickListener{
             salvarNovoAluno()
 
         }
     }
     private fun salvarNovoAluno(){
-        val nome = inp_nome_cad.text.toString()
-        val matricula = inp_matricula_cad.text.toString()
-        val responsavel = inp_responsavel_cad.text.toString()
-        if (TextUtils.isEmpty(nome)) {
+        val aluno = Aluno()
+        aluno.nome = binding.inpNomeCad.text.toString()
+        aluno.matricula = binding.inpMatriculaCad.text.toString()
+        aluno.cpf = binding.inpCpfCad.text.toString()
+        aluno.responsavel = binding.inpResponsavelCad.text.toString()
+        if (TextUtils.isEmpty(aluno.nome)) {
             Toast.makeText(this, "Preencha o campo Nome!", Toast.LENGTH_SHORT).show()
-            println("Nome:" + nome)
 
-        }else if (TextUtils.isEmpty(matricula)) {
+        }else if (TextUtils.isEmpty(aluno.matricula)) {
             Toast.makeText(this, "Preencha o campo Matricula!", Toast.LENGTH_SHORT).show()
-            println("Matricula:" + matricula)
 
-        }else if (TextUtils.isEmpty(responsavel)) {
+        }else if(TextUtils.isEmpty((aluno.cpf))){
+            Toast.makeText(this, "Preencha o campo Cpf!", Toast.LENGTH_SHORT).show()
+
+        }else if (TextUtils.isEmpty(aluno.responsavel)) {
             Toast.makeText(this, "Preencha o campo Responsavel!", Toast.LENGTH_SHORT).show()
-            println("Responsavel:" + responsavel)
 
         }else {
-            msg_cadastrado.setTextColor(resources.getColor(R.color.red))
-            msg_cadastrado.text = "Cadastrado com Sucesso!!"
+            retrofit.setForm(aluno.nome, aluno.cpf, aluno.matricula, aluno.responsavel).enqueue(object : Callback<Aluno>{
+                override fun onFailure(call: Call<Aluno>, t: Throwable) {
+                    Log.d("Erro: ", t.toString())
+
+                }
+
+                override fun onResponse(call: Call<Aluno>, response: Response<Aluno>) {
+                    if(response.isSuccessful){
+                        response.body()?.let{
+                            "Autenticou!!"
+                            println("Autenticou!!")
+
+                        }
+                    }
+                }
+            })
+            imprimeInputs(aluno)
+
             Timer().schedule(2000){
                 navegarParaTelaMain()
 
@@ -51,6 +85,24 @@ class CadAluno : AppCompatActivity() {
         println("MUDOU PARA TELA MAIN")
         startActivity(listaAluno)
 
+    }
+    private fun imprimeInputs(aluno: Aluno){
+        binding.msgCadastrado.setTextColor(resources.getColor(R.color.red))
+        binding.msgCadastrado.text = "Cadastrado com Sucesso!!"
+        println("Nome: " + aluno.nome)
+        println("Matricula: " + aluno.matricula)
+        println("Cpf: " + aluno.cpf)
+        println("Responsavel: " + aluno.responsavel)
 
+    }
+    interface enviarForm{
+        @FormUrlEncoded
+        @POST("insert_aluno.php")
+        fun setForm(
+            @Field("matricula") matricula: String,
+            @Field("nome") nome: String,
+            @Field("cpf") cpf: String,
+            @Field("responsavel") responsavel: String
+        ): Call<Aluno>
     }
 }

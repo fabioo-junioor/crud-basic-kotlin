@@ -3,35 +3,37 @@ package com.example.crudbasickotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import com.example.crudbasickotlin.databinding.ActivityMainBinding
+
+private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-
-        val button_cad_novo: Button = findViewById(R.id.btn_cad_aluno)
-        val button_update_aluno: Button = findViewById(R.id.btn_update)
-        button_cad_novo.setOnClickListener{
+        binding.btnCadAluno.setOnClickListener{
             navegarParaTelaCadastro()
 
         }
-        button_update_aluno.setOnClickListener{
+        binding.btnUpdate.setOnClickListener {
             navegarParaTelaAtualizar()
 
         }
     }
     private fun navegarParaTelaCadastro(){
         val cadAluno = Intent(this, CadAluno::class.java)
-        println("MUDOU PARA TELA CADASTRO")
+        println("MUDOU PARA TELA CADASTRO!")
         startActivity(cadAluno)
 
     }
     private fun navegarParaTelaAtualizar(){
         val atualizarAluno = Intent(this, AtualizarAluno::class.java)
-        println("MUDOU PARA TELA ATUALIZAR")
+        println("MUDOU PARA TELA ATUALIZAR!")
         startActivity(atualizarAluno)
 
     }
+
 }

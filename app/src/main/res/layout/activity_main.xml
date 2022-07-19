@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/btn_update"
         android:layout_width="130dp"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="631dp"
         android:layout_marginBottom="35dp"
@@ -39,7 +39,7 @@
     <Button
         android:id="@+id/btn_cad_aluno"
         android:layout_width="130dp"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_marginTop="631dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="35dp"
