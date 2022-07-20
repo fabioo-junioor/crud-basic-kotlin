@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_atualizar_aluno.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_cad_aluno.xml" value="0.33" />
+        <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_cad_responsavel.xml" value="0.33" />
+        <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_deletar_aluno.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>

@@ -2,15 +2,37 @@
 header('Content-Type: application/json; Charset=UTF-8');
 include("connection.php");
 
+$matricula = $_POST["matricula"];
 $nome = $_POST["nome"];
 $cpf = $_POST["cpf"];
-$matricula = $_POST["matricula"];
 $responsavel = $_POST["responsavel"];
 
-$sql = "INSERT INTO `aluno` (matricula, nome, cpf, idResponsavel)
-    VALUES ('$matricula', '$nome', '$cpf', '50')";
+$sql2 = "SELECT `idResponsavel` FROM `responsavel` WHERE nome = '$responsavel'";
+$executa = mysqli_query($con, $sql2) or die (mysqli_error());
+$total = mysqli_num_rows($executa);
 
-$executa = mysqli_query($con, $sql) or die (mysqli_error());
+if ($total > 0) {
+    $saida = '';
+    for($i=0; $i<$total; $i++){
+        $result = mysqli_fetch_assoc($executa);
+        $saida .= '{"responsavel" : "'.$result['idResponsavel'].'"}';
+        
+    }
+    
+    $sql = "INSERT INTO `aluno` (matricula, nome, cpf, idResponsavel)
+    VALUES ('$matricula', '$nome', '$cpf', '".$result['idResponsavel']."')";
+
+
+    $executa2 = mysqli_query($con, $sql) or die (mysqli_error());
+    
+    echo $saida;
+}else{
+    $saida = '';
+    $saida .= '{"responsavel" : "vazio"}';
+    echo $saida;
+
+}
+
 
 mysqli_close($con);
 

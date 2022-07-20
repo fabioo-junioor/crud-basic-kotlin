@@ -36,6 +36,10 @@ class CadAluno : AppCompatActivity() {
             salvarNovoAluno()
 
         }
+        binding.btnCadResponsavel.setOnClickListener{
+            navegarParaTelaCadResponsavel()
+
+        }
     }
     private fun salvarNovoAluno(){
         val aluno = Aluno()
@@ -56,7 +60,7 @@ class CadAluno : AppCompatActivity() {
             Toast.makeText(this, "Preencha o campo Responsavel!", Toast.LENGTH_SHORT).show()
 
         }else {
-            retrofit.setForm(aluno.nome, aluno.cpf, aluno.matricula, aluno.responsavel).enqueue(object : Callback<Aluno>{
+            retrofit.setForm(aluno.matricula, aluno.nome, aluno.cpf, aluno.responsavel).enqueue(object : Callback<Aluno>{
                 override fun onFailure(call: Call<Aluno>, t: Throwable) {
                     Log.d("Erro: ", t.toString())
 
@@ -65,30 +69,42 @@ class CadAluno : AppCompatActivity() {
                 override fun onResponse(call: Call<Aluno>, response: Response<Aluno>) {
                     if(response.isSuccessful){
                         response.body()?.let{
-                            "Autenticou!!"
-                            println("Autenticou!!")
+                            if(response.body()!!.responsavel.equals("vazio")){
+                                println("Responsavel não Cadastrado!!")
+                                binding.msgCadastrado.setTextColor(resources.getColor(R.color.red))
+                                binding.msgCadastrado.text = "Responsavel não Cadastrado!!"
+                                imprimeInputs(aluno)
 
+                            } else {
+                                println("Cadastro Efetuado!!")
+                                binding.msgCadastrado.setTextColor(resources.getColor(R.color.red))
+                                binding.msgCadastrado.text = "Cadastro Efetuado!!"
+                                imprimeInputs(aluno)
+                                Timer().schedule(2000){
+                                    navegarParaTelaMain()
+
+                                }
+                            }
                         }
                     }
                 }
             })
-            imprimeInputs(aluno)
-
-            Timer().schedule(2000){
-                navegarParaTelaMain()
-
-            }
         }
     }
     private fun navegarParaTelaMain(){
         val listaAluno = Intent(this, MainActivity::class.java)
-        println("MUDOU PARA TELA MAIN")
+        println("MUDOU PARA TELA MAIN!")
         startActivity(listaAluno)
 
     }
+    private fun navegarParaTelaCadResponsavel(){
+        val cadResponsavel = Intent(this, CadResponsavel::class.java)
+        println("MUDOU PARA TELA CADASTRO RESPONSAVEL!")
+        startActivity(cadResponsavel)
+
+    }
     private fun imprimeInputs(aluno: Aluno){
-        binding.msgCadastrado.setTextColor(resources.getColor(R.color.red))
-        binding.msgCadastrado.text = "Cadastrado com Sucesso!!"
+        println("Dados Informados pelo Usuario!!")
         println("Nome: " + aluno.nome)
         println("Matricula: " + aluno.matricula)
         println("Cpf: " + aluno.cpf)
