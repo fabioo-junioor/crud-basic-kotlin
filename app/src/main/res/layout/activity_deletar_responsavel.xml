@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeletarAluno">
+    tools:context=".DeletarResponsavel">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="134dp"
+        android:layout_marginStart="95dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="134dp"
-        android:text="Deletar Aluno"
+        android:layout_marginEnd="95dp"
+        android:text="Deletar Responsavel"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -22,19 +22,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="84dp"
-        android:text="Matricula"
+        android:layout_marginEnd="354dp"
+        android:text="Cpf"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/inp_matricula_delete"
+        android:id="@+id/inp_cpf_delete"
         android:layout_width="330dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
@@ -43,30 +45,31 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="182dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inp_cpf_delete" />
 
     <Button
-        android:id="@+id/btn_deletar_aluno"
+        android:id="@+id/btn_deletar_responsavel"
         android:layout_width="330dp"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="66dp"
-        android:layout_marginEnd="49dp"
+        android:layout_marginEnd="41dp"
         android:backgroundTint="#333"
         android:text="Deletar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="165dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="189dp"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inp_matricula_delete" />
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 </androidx.constraintlayout.widget.ConstraintLayout>
