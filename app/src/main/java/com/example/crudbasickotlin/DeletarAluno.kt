@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.crudbasickotlin.databinding.ActivityDeletarAlunoBinding
 import com.google.gson.GsonBuilder
@@ -38,14 +41,12 @@ class DeletarAluno : AppCompatActivity() {
 
         }
     }
-
-
     private fun deletarAluno(){
         val aluno = Aluno()
         aluno.matricula = binding.inpMatriculaDelete.text.toString()
-        aluno.responsavel = binding.inpMatriculaDelete.text.toString()
-        aluno.cpf = binding.inpMatriculaDelete.text.toString()
-        aluno.nome = binding.inpMatriculaDelete.text.toString()
+        aluno.responsavel = ""
+        aluno.cpf = ""
+        aluno.nome = ""
         if (TextUtils.isEmpty(aluno.matricula)) {
             Toast.makeText(this, "Preencha o campo Matricula!", Toast.LENGTH_SHORT).show()
 
@@ -56,7 +57,6 @@ class DeletarAluno : AppCompatActivity() {
                     Log.d("Erro: ", t.toString())
 
                 }
-
                 override fun onResponse(call: Call<Aluno>, response: Response<Aluno>) {
                     if(response.isSuccessful){
                         response.body()?.let{
@@ -70,7 +70,7 @@ class DeletarAluno : AppCompatActivity() {
                                 binding.textView9.setTextColor(resources.getColor(R.color.red))
                                 binding.textView9.text = "Aluno excluido!!"
                                 Timer().schedule(2000){
-                                    navegarParaTelaMain()
+                                    navegarParaTelaBuscarAluno()
 
                                 }
                             }
@@ -80,11 +80,70 @@ class DeletarAluno : AppCompatActivity() {
             })
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
 
-    private fun navegarParaTelaMain(){
-        val listaAluno = Intent(this, MainActivity::class.java)
-        println("MUDOU PARA TELA MAIN")
-        startActivity(listaAluno)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.insertAluno -> {
+                val insertAluno = Intent(this, CadAluno::class.java)
+                println("MUDOU PARA TELA CADASTRO!")
+                startActivity(insertAluno)
+                true
+            }
+            R.id.updateAluno -> {
+                val updateAluno = Intent(this, AtualizarAluno::class.java)
+                println("MUDOU PARA TELA ATUALIZAR!")
+                startActivity(updateAluno)
+                true
+            }
+            R.id.deleteAluno -> {
+                val deletaAluno = Intent(this, DeletarAluno::class.java)
+                println("MUDOU PARA TELA DELETAR!")
+                startActivity(deletaAluno)
+                true
+            }
+            R.id.selectAluno -> {
+                val selectAluno = Intent(this, BuscaAluno::class.java)
+                println("MUDOU PARA TELA BUSCAR!")
+                startActivity(selectAluno)
+                true
+            }
+            R.id.insertResponsavel -> {
+                val insertResponsavel = Intent(this, CadResponsavel::class.java)
+                println("MUDOU PARA TELA CADASTRO!")
+                startActivity(insertResponsavel)
+                true
+            }
+            R.id.updateResponsavel -> {
+                val updateResponsavel = Intent(this, AtualizarResponsavel::class.java)
+                println("MUDOU PARA TELA ATUALIZAR!")
+                startActivity(updateResponsavel)
+                true
+            }
+            R.id.deleteResponsavel -> {
+                val deletaResponsavel = Intent(this, DeletarResponsavel::class.java)
+                println("MUDOU PARA TELA DELETAR!")
+                startActivity(deletaResponsavel)
+                true
+            }
+            R.id.selectResponsavel -> {
+                val selectResponsavel = Intent(this, BuscarResponsavel::class.java)
+                println("MUDOU PARA TELA BUSCAR!")
+                startActivity(selectResponsavel)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+
+        }
+    }
+    private fun navegarParaTelaBuscarAluno(){
+        val selectAluno = Intent(this, BuscaAluno::class.java)
+        println("MUDOU PARA TELA BUSCAR")
+        startActivity(selectAluno)
 
     }
     interface deletarAluno{

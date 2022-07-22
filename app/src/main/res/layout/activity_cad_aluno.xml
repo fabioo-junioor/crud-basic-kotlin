@@ -6,33 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".CadAluno">
 
-    <Button
-        android:id="@+id/btn_cad_responsavel"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="631dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="35dp"
-        android:backgroundTint="#333"
-        android:paddingLeft="1dp"
-        android:paddingTop="2dp"
-        android:paddingRight="1dp"
-        android:paddingBottom="2dp"
-        android:text="@string/cadastrar_responsavel"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="149dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="161dp"
         android:text="@string/inserir_os_dados"
         android:textColor="#000000"
@@ -48,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="341dp"
         android:text="@string/nome"
         android:textColor="#000000"
@@ -153,7 +132,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="215dp"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inp_responsavel_cad" />

@@ -6,6 +6,7 @@ $nome = $_POST["nome"];
 $email = $_POST["email"];
 $cpf = $_POST["cpf"];
 
+
 $sql = "SELECT `idResponsavel` FROM `responsavel` WHERE cpf = '$cpf'";
 $executa = mysqli_query($con, $sql) or die (mysqli_error());
 $total = mysqli_num_rows($executa);
@@ -16,20 +17,20 @@ if ($total > 0) {
         $result = mysqli_fetch_assoc($executa);
         $saida .= '{"cpf" : "achou"}';
         
-    }        
-    echo $saida;
+    }
+           
+    $sql2 = "UPDATE `responsavel` SET nome = '$nome', email = '$email' WHERE cpf = '$cpf'";
+    $executa2 = mysqli_query($con, $sql2) or die (mysqli_error());
+        
     
-} else {
+    echo $saida;
+}else{
     $saida = '';
     $saida .= '{"cpf" : "vazio"}';
-    echo $saida;
-    
-    $sql2 = "INSERT INTO `responsavel` (nome, email, cpf)
-    VALUES ('$nome', '$email', '$cpf')";
 
-    $executa2 = mysqli_query($con, $sql2) or die (mysqli_error());
-   
-}   
+    echo $saida;
+
+}
 
 
 mysqli_close($con);

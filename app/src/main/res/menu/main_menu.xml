@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/selectAluno"
+        android:title="Buscar Aluno"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/updateAluno"
+        android:title="Atualizar Aluno"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/insertAluno"
+        android:title="Cadastrar Aluno"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/deleteAluno"
+        android:title="Deletar Aluno"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/selectResponsavel"
+        android:title="Buscar Responsavel"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/updateResponsavel"
+        android:title="Atualizar Responsavel"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/insertResponsavel"
+        android:title="Cadastrar Responsavel"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/deleteResponsavel"
+        android:title="Deletar Responsavel"
+        app:showAsAction="never"
+        />
+</menu>

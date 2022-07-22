@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_atualizar_aluno.xml" value="0.33" />
+        <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_atualizar_responsavel.xml" value="0.33" />
+        <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_busca_aluno.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_buscar_responsavel.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_cad_aluno.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_cad_responsavel.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_deletar_aluno.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_deletar_responsavel.xml" value="0.33" />
         <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Graxaim/AndroidStudioProjects/CrudBasicKotlin/app/src/main/res/menu/main_menu.xml" value="0.3574074074074074" />
       </map>
     </option>
   </component>

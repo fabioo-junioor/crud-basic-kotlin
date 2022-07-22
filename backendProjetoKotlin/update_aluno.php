@@ -7,12 +7,7 @@ $nome = $_POST["nome"];
 $cpf = $_POST["cpf"];
 $responsavel = $_POST["responsavel"];
 
-/*
-$matricula = "2021";
-//$nome = $_POST["nome"];
-//$cpf = $_POST["cpf"];
-$responsavel = "rosane";
-*/
+
 $sql2 = "SELECT `idAluno` FROM `aluno` WHERE matricula = '$matricula'";
 $executa = mysqli_query($con, $sql2) or die (mysqli_error());
 $total = mysqli_num_rows($executa);

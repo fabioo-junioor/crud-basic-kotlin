@@ -6,89 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_update_aluno"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="631dp"
-        android:layout_marginBottom="35dp"
-        android:backgroundTint="#333"
-        android:paddingLeft="1dp"
-        android:paddingTop="2dp"
-        android:paddingRight="1dp"
-        android:paddingBottom="2dp"
-        android:text="@string/atualizar_aluno"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="119dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="126dp"
-        android:text="@string/lista_de_alunos"
-        android:textColor="#000000"
-        android:textSize="24sp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="292dp"
+        android:text="Carregando App"
+        android:textColor="#F44336"
+        android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_cad_aluno"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="631dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="35dp"
-        android:backgroundTint="#333"
-        android:paddingLeft="1dp"
-        android:paddingTop="2dp"
-        android:paddingRight="1dp"
-        android:paddingBottom="2dp"
-        android:text="@string/cadastrar_aluno"
-        android:textSize="11sp"
-        app:iconPadding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_lista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="269dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/btn_deletar_aluno"
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="552dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="35dp"
-        android:backgroundTint="#333"
-        android:paddingLeft="1dp"
-        android:paddingTop="2dp"
-        android:paddingRight="1dp"
-        android:paddingBottom="2dp"
-        android:text="Deletar Aluno"
-        android:textColor="#FFFFFF"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cad_aluno"
-        app:layout_constraintStart_toEndOf="@+id/btn_update_aluno"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

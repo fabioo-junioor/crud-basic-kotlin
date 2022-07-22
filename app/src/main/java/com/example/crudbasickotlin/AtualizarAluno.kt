@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.crudbasickotlin.databinding.ActivityAtualizarAlunoBinding
 import retrofit2.Call
@@ -66,7 +69,6 @@ class AtualizarAluno : AppCompatActivity() {
                     Log.d("Erro: ", t.toString())
 
                 }
-
                 override fun onResponse(call: Call<Aluno>, response: Response<Aluno>) {
                     if(response.isSuccessful){
                         response.body()?.let{
@@ -88,7 +90,7 @@ class AtualizarAluno : AppCompatActivity() {
                                 binding.textView15.text = "Atualização Efetuada!!"
                                 imprimeInputs(aluno)
                                 Timer().schedule(2000){
-                                    navegarParaTelaMain()
+                                    navegarParaTelaBuscarAluno()
 
                                 }
                             }
@@ -98,10 +100,70 @@ class AtualizarAluno : AppCompatActivity() {
             })
         }
     }
-    private fun navegarParaTelaMain(){
-        val listaAluno = Intent(this, MainActivity::class.java)
-        println("MUDOU PARA TELA MAIN")
-        startActivity(listaAluno)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.insertAluno -> {
+                val insertAluno = Intent(this, CadAluno::class.java)
+                println("MUDOU PARA TELA CADASTRO!")
+                startActivity(insertAluno)
+                true
+            }
+            R.id.updateAluno -> {
+                val updateAluno = Intent(this, AtualizarAluno::class.java)
+                println("MUDOU PARA TELA ATUALIZAR!")
+                startActivity(updateAluno)
+                true
+            }
+            R.id.deleteAluno -> {
+                val deletaAluno = Intent(this, DeletarAluno::class.java)
+                println("MUDOU PARA TELA DELETAR!")
+                startActivity(deletaAluno)
+                true
+            }
+            R.id.selectAluno -> {
+                val selectAluno = Intent(this, BuscaAluno::class.java)
+                println("MUDOU PARA TELA BUSCAR!")
+                startActivity(selectAluno)
+                true
+            }
+            R.id.insertResponsavel -> {
+                val insertResponsavel = Intent(this, CadResponsavel::class.java)
+                println("MUDOU PARA TELA CADASTRO!")
+                startActivity(insertResponsavel)
+                true
+            }
+            R.id.updateResponsavel -> {
+                val updateResponsavel = Intent(this, AtualizarResponsavel::class.java)
+                println("MUDOU PARA TELA ATUALIZAR!")
+                startActivity(updateResponsavel)
+                true
+            }
+            R.id.deleteResponsavel -> {
+                val deletaResponsavel = Intent(this, DeletarResponsavel::class.java)
+                println("MUDOU PARA TELA DELETAR!")
+                startActivity(deletaResponsavel)
+                true
+            }
+            R.id.selectResponsavel -> {
+                val selectResponsavel = Intent(this, BuscarResponsavel::class.java)
+                println("MUDOU PARA TELA BUSCAR!")
+                startActivity(selectResponsavel)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+
+        }
+    }
+    private fun navegarParaTelaBuscarAluno(){
+        val selectAluno = Intent(this, BuscaAluno::class.java)
+        println("MUDOU PARA TELA BUSCAR")
+        startActivity(selectAluno)
 
     }
     private fun imprimeInputs(aluno: Aluno){

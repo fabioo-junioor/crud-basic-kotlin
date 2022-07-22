@@ -9,9 +9,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.crudbasickotlin.databinding.ActivityDeletarAlunoBinding
-import com.example.crudbasickotlin.databinding.ActivityDeletarResponsavelBinding
-import com.google.gson.GsonBuilder
+import com.example.crudbasickotlin.databinding.ActivityAtualizarAlunoBinding
+import com.example.crudbasickotlin.databinding.ActivityAtualizarResponsavelBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,38 +19,48 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import java.sql.Connection
+import java.sql.DriverManager
+import java.sql.ResultSet
+import java.sql.Statement
 import java.util.*
 import kotlin.concurrent.schedule
 
-private lateinit var binding: ActivityDeletarResponsavelBinding
-private val gson = GsonBuilder().setLenient().create()
+private lateinit var binding: ActivityAtualizarResponsavelBinding
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create(gson))
+    .addConverterFactory(GsonConverterFactory.create())
     .baseUrl("http://10.0.2.2/backendProjetoKotlin/")
     .build()
-    .create(DeletarResponsavel.deletarResponsavel::class.java)
-class DeletarResponsavel : AppCompatActivity() {
+    .create(AtualizarResponsavel.updateForm::class.java)
+
+class AtualizarResponsavel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDeletarResponsavelBinding.inflate(layoutInflater)
-        var view = binding.root
+        binding = ActivityAtualizarResponsavelBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(view)
 
-        binding.btnDeletarResponsavel.setOnClickListener{
-            deletarResponsavel()
+        binding.btnAtualizar.setOnClickListener{
+            atualizaDadosResponsavel()
 
         }
     }
-    private fun deletarResponsavel(){
+    private fun atualizaDadosResponsavel(){
         val responsavel = Responsavel()
-        responsavel.nome = ""
-        responsavel.email = ""
-        responsavel.cpf = binding.inpCpfDelete.text.toString()
-        if (TextUtils.isEmpty(responsavel.cpf)) {
+        responsavel.nome = binding.inpNomeAtualiza.text.toString()
+        responsavel.email = binding.inpEmailAtualiza.text.toString()
+        responsavel.cpf = binding.inpCpfAtualiza.text.toString()
+        if (TextUtils.isEmpty(responsavel.nome)) {
+            Toast.makeText(this, "Preencha o campo Nome!", Toast.LENGTH_SHORT).show()
+
+        }else if (TextUtils.isEmpty(responsavel.email)) {
+            Toast.makeText(this, "Preencha o campo Email!", Toast.LENGTH_SHORT).show()
+
+        }else if(TextUtils.isEmpty((responsavel.cpf))){
             Toast.makeText(this, "Preencha o campo Cpf!", Toast.LENGTH_SHORT).show()
 
         } else {
-            retrofit.setAluno(responsavel.nome, responsavel.email, responsavel.cpf).enqueue(object :
+            retrofit.setForm(responsavel.nome, responsavel.email, responsavel.cpf).enqueue(object :
                 Callback<Responsavel> {
                 override fun onFailure(call: Call<Responsavel>, t: Throwable) {
                     Log.d("Erro: ", t.toString())
@@ -61,22 +70,16 @@ class DeletarResponsavel : AppCompatActivity() {
                     if(response.isSuccessful){
                         response.body()?.let{
                             if(response.body()!!.cpf.equals("vazio")) {
-                                println("Cpf não encontrado!!")
-                                binding.textView22.setTextColor(resources.getColor(R.color.red))
-                                binding.textView22.text = "Cpf não encontrada!!"
-
-                            }else if (response.body()!!.cpf.equals("achouID")){
-                                println("Responsavel não pode ser excluido!!")
-                                println("Existe um aluno atrelado a esse cadastro!!")
-                                binding.textView22.setTextColor(resources.getColor(R.color.red))
-                                binding.textView22.text = "Responsavel não pode ser excluido!!" +
-                                                            "\nExiste um aluno atrelado a esse cadastro!!" +
-                                                            "\nNome: " + response.body()!!.nome
+                                println("Responsavel não cadastrado!!")
+                                binding.textView33.setTextColor(resources.getColor(R.color.red))
+                                binding.textView33.text = "Responsavel não cadastrado!!"
+                                imprimeInputs(responsavel)
 
                             } else {
-                                println("Responsavel excluido!!")
-                                binding.textView22.setTextColor(resources.getColor(R.color.red))
-                                binding.textView22.text = "Responsavel excluido!!"
+                                println("Atualização Efetuada!!")
+                                binding.textView33.setTextColor(resources.getColor(R.color.red))
+                                binding.textView33.text = "Atualização Efetuada!!"
+                                imprimeInputs(responsavel)
                                 Timer().schedule(2000){
                                     navegarParaTelaBuscarResponsavel()
 
@@ -154,13 +157,20 @@ class DeletarResponsavel : AppCompatActivity() {
         startActivity(selectResponsavel)
 
     }
-    interface deletarResponsavel{
+    private fun imprimeInputs(responsavel: Responsavel){
+        println("Dados Informados pelo Usuario!!")
+        println("Nome: " + responsavel.nome)
+        println("Email: " + responsavel.email)
+        println("Cpf: " + responsavel.cpf)
+
+    }
+    interface updateForm{
         @FormUrlEncoded
-        @POST("delete_responsavel.php")
-        fun setAluno(
+        @POST("update_responsavel.php")
+        fun setForm(
             @Field("nome") nome: String,
             @Field("email") email: String,
-            @Field("cpf") cpf: String,
+            @Field("cpf") cpf: String
         ): Call<Responsavel>
     }
 }

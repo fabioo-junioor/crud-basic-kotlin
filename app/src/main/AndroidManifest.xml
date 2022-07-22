@@ -18,6 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AtualizarResponsavel"
+            android:exported="false" />
+        <activity
+            android:name=".BuscarResponsavel"
+            android:exported="false" />
+        <activity
+            android:name=".BuscaAluno"
+            android:exported="false" />
+        <activity
             android:name=".DeletarResponsavel"
             android:exported="false" />
         <activity
