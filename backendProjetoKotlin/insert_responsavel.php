@@ -16,21 +16,21 @@ if ($total > 0) {
         $result = mysqli_fetch_assoc($executa);
         $saida .= '{"cpf" : "achou"}';
         
-    }        
+    }
+
     echo $saida;
     
 } else {
     $saida = '';
     $saida .= '{"cpf" : "vazio"}';
+
     echo $saida;
     
     $sql2 = "INSERT INTO `responsavel` (nome, email, cpf)
     VALUES ('$nome', '$email', '$cpf')";
-
     $executa2 = mysqli_query($con, $sql2) or die (mysqli_error());
    
 }   
-
 
 mysqli_close($con);
 

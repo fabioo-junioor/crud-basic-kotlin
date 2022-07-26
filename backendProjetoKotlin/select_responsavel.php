@@ -21,7 +21,8 @@ if ($total > 0) {
     }
     
     echo $saida;
-}else{
+
+} else {
     $saida = '';
     $saida .= '
     {"nome" : "vazio",
@@ -31,7 +32,6 @@ if ($total > 0) {
     echo $saida;
 
 }
-
 
 mysqli_close($con);
 

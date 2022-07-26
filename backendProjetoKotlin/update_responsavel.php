@@ -17,21 +17,19 @@ if ($total > 0) {
         $result = mysqli_fetch_assoc($executa);
         $saida .= '{"cpf" : "achou"}';
         
-    }
-           
+    }           
     $sql2 = "UPDATE `responsavel` SET nome = '$nome', email = '$email' WHERE cpf = '$cpf'";
     $executa2 = mysqli_query($con, $sql2) or die (mysqli_error());
-        
     
     echo $saida;
-}else{
+
+} else {
     $saida = '';
     $saida .= '{"cpf" : "vazio"}';
 
     echo $saida;
 
 }
-
 
 mysqli_close($con);
 
