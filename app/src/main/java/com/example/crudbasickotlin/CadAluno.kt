@@ -74,9 +74,11 @@ class CadAluno : AppCompatActivity() {
                                 imprimeInputs(aluno)
 
                             }else if(response.body()!!.responsavel.equals("vazio")){
-                                println("Responsavel não cadastrado!!")
+                                println("Responsavel não cadastrado!!" +
+                                        "\nCadastre um responsavel!!")
                                 binding.msgCadastrado.setTextColor(resources.getColor(R.color.red))
-                                binding.msgCadastrado.text = "Responsavel não cadastrado!!"
+                                binding.msgCadastrado.text = "Responsavel não cadastrado!!" +
+                                                                "\nCadastre um responsavel!!"
                                 imprimeInputs(aluno)
 
                             } else {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 22-Jul-2022 às 03:10
+-- Tempo de geração: 27-Jul-2022 às 15:30
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -37,17 +37,17 @@ CREATE TABLE IF NOT EXISTS `aluno` (
   PRIMARY KEY (`idAluno`),
   UNIQUE KEY `idAluno` (`idAluno`),
   KEY `idResponsavel` (`idResponsavel`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `aluno`
 --
 
 INSERT INTO `aluno` (`idAluno`, `matricula`, `nome`, `cpf`, `idResponsavel`) VALUES
-(4, '2021', 'Fabio Correa Costa Junior', '11122233355', 5),
-(27, '656565', 'Maria Joaquina', '01144727006', 3),
-(25, '22223', 'paulo p', '111121', 5),
-(28, '20182121', 'Izabel', '55566655522', 3);
+(4, '2021', 'Fabio Junior', '1010101', 2),
+(27, '656565', 'Maria Joaquina', '01144727006', 2),
+(25, '22223', 'Paulo Costa', '111121', 5),
+(29, '202010', 'Erico Silva', '123456789', 3);
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `responsavel` (
   `cpf` varchar(11) NOT NULL,
   PRIMARY KEY (`idResponsavel`),
   UNIQUE KEY `idResponsavel` (`idResponsavel`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `responsavel`
@@ -148,7 +148,8 @@ CREATE TABLE IF NOT EXISTS `responsavel` (
 INSERT INTO `responsavel` (`idResponsavel`, `nome`, `email`, `cpf`) VALUES
 (2, 'Maria Silva', 'maria.silva@bol.com.br', '11122233355'),
 (3, 'Tulio Santos', 'tulio@bol.com.br', '4646'),
-(5, 'Rosane', 'zane@gmail.com', '55555');
+(5, 'Rosane Costa', 'zane@bol.com.br', '55555'),
+(11, 'Augusto Martins', 'a.martins@gmail.com', '12312345');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
